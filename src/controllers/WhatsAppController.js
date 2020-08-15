@@ -283,6 +283,8 @@ export default class WhatsAppController{
 
 					this._documentPreviewController = new DocumentPreviewController(file);
 
+					
+
 					this._documentPreviewController.getPreviewData().then(data=>{
 
 						this.el.imgPanelDocumentPreview.src = data.src;
@@ -292,12 +294,32 @@ export default class WhatsAppController{
 
 					}).catch(error=>{
 
+						console.log('type', file.type);
+
 						switch(file.type){
 
+							case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+								this.el.iconPanelDocumentPreview.className = 'jcxhw icon-doc-xls';
+							break;
+
+							case 'application/msword':
+							case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+								this.el.iconPanelDocumentPreview.className = 'jcxhw icon-doc-doc';
+							break;
+
+							case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+								this.el.iconPanelDocumentPreview.className = 'jcxhw icon-doc-ppt';
+							break;
+
 							default:
-								
+								this.el.iconPanelDocumentPreview.className = 'jcxhw icon-doc-generic';
+							break;
 
 						}
+
+						this.el.filenamePanelDocumentPreview.innerHTML = file.name;
+						this.el.imagePanelDocumentPreview.hide();
+						this.el.filePanelDocumentPreview.show();
 
 					});
 
