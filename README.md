@@ -1,5 +1,4 @@
-# Projeto WhatsApp Cloneilla.github.io/pdf.js/ |
-| MediaDevices.getUser
+# Projeto WhatsApp Clone
 
 Projeto clone do whatsapp, desenvolvido com javascript
 

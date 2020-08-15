@@ -5,6 +5,7 @@ import Format from './../utils/Format';
 //segundary controllers
 
 import CameraController from './CameraController';
+import DocumentPreviewController from './DocumentPreviewController';
 
 export default class WhatsAppController{
 
@@ -280,9 +281,25 @@ export default class WhatsAppController{
 
 					let file = this.el.inputDocument.files[0];
 
-					this._documentPreviewController = new this._documentPreviewController;
+					this._documentPreviewController = new DocumentPreviewController(file);
 
-					console.log(files);
+					this._documentPreviewController.getPreviewData().then(data=>{
+
+						this.el.imgPanelDocumentPreview.src = data.src;
+						this.el.infoPanelDocumentPreview.innerHTML = data.info;
+						this.el.imagePanelDocumentPreview.show();
+						this.el.filePanelDocumentPreview.hide();
+
+					}).catch(error=>{
+
+						switch(file.type){
+
+							default:
+								
+
+						}
+
+					});
 
 				}
 
