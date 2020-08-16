@@ -1,4 +1,4 @@
-//principal controllers
+//principal controller
 
 import WhatsAppController from './controllers/WhatsAppController.js';
 

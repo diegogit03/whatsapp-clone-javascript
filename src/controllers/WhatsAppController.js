@@ -5,6 +5,7 @@ import Format from './../utils/Format';
 //segundary controllers
 
 import CameraController from './CameraController';
+import MicrophoneController from './MicrophoneController';
 import DocumentPreviewController from './DocumentPreviewController';
 
 export default class WhatsAppController{
@@ -269,7 +270,7 @@ export default class WhatsAppController{
 				this.closeAllMainPanel();
 				this.el.panelDocumentPreview.addClass('open');
 				this.el.panelDocumentPreview.css({
-					height: 'calc(100% - 120px)'
+					height: '1%'
 				});
 				this.el.inputDocument.click();
 
@@ -291,6 +292,9 @@ export default class WhatsAppController{
 						this.el.infoPanelDocumentPreview.innerHTML = data.info;
 						this.el.imagePanelDocumentPreview.show();
 						this.el.filePanelDocumentPreview.hide();
+						this.el.panelDocumentPreview.css({
+							height: 'calc(100% - 120px)'
+						});
 
 					}).catch(error=>{
 
@@ -358,16 +362,20 @@ export default class WhatsAppController{
 				this.el.btnSendMicrophone.hide();
 				this.startRecordMicrophoneTime();
 
+				this._microphoneController = new MicrophoneController();
+
 			});
 
 			this.el.btnCancelMicrophone.on('click',event=>{
 
+				this._microphoneController.stop();
 				this.closeRecordMicrophone();
 
 			});
 
 			this.el.btnFinishMicrophone.on('click',event=>{
 
+				this._microphoneController.stop();
 				this.closeRecordMicrophone();
 
 			});
