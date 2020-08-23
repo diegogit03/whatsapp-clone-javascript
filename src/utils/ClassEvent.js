@@ -36,7 +36,7 @@ export default class ClassEvent{
 
 			this._events[eventName].forEach(event => {
 
-				
+				event.apply()
 
 			});
 
