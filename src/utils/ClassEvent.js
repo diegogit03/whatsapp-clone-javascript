@@ -27,4 +27,21 @@ export default class ClassEvent{
 
 	}
 
+	trigger(){
+
+		let args = [...arguments];
+		let eventName = args.shift();
+
+		if(this._events[eventName] instanceof Array){
+
+			this._events[eventName].forEach(event => {
+
+				
+
+			});
+
+		}
+
+	}
+
 }

@@ -34,13 +34,4 @@ export default class MicrophoneController{
 		
 	}
 
-	trigger(){
-
-		let args = [...arguments];
-		let eventName = args.shift();
-
-		
-
-	}
-
 }
