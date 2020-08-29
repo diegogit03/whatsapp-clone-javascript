@@ -2,28 +2,15 @@ export default class ClassEvent{
 
 	constructor(){
 
-		this._events = {
-			play: [
-				() => {
-
-					console.log('a');
-
-				},
-				() => {
-
-					console.log('b');
-
-				},
-			]
-		};
+		this._events = {};
 
 	}
 
 	on(EventName, callback){
 
-		if(!this._events[EventName]) this._events = new Array();
+		if(!this._events[EventName]) this._events[EventName] = new Array();
 
-		this._events[EventName].push(callback)
+		this._events[EventName].push(callback);
 
 	}
 
@@ -32,11 +19,13 @@ export default class ClassEvent{
 		let args = [...arguments];
 		let eventName = args.shift();
 
+		args.push(new Event(eventName));
+
 		if(this._events[eventName] instanceof Array){
 
-			this._events[eventName].forEach(event => {
+			this._events[eventName].forEach(callback => {
 
-				event.apply()
+				callback.apply(null, args);
 
 			});
 
