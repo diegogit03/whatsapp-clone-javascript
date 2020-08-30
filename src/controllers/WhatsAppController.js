@@ -1,6 +1,7 @@
 //utils
 
 import Format from './../utils/Format';
+import Firebase from './../utils/Firebase';
 
 //segundary controllers
 
@@ -15,6 +16,7 @@ export default class WhatsAppController{
 		this.elementsPrototype();
 		this.loadElements();
 		this.initEvents();
+		this._firebase = new Firebase();
 
 	}
 
