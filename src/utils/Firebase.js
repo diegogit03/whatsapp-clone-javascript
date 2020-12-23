@@ -22,10 +22,6 @@ export default class Firebase{
 		if(!window._initializeFirebase){
 			firebase.initializeApp(this._config);
 
-			firebase.firestore().settings({
-				timestampsInSnapshots: true
-			});
-
 			window._initializeFirebase = true;	
 		}
 
